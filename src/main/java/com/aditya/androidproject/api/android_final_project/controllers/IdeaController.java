@@ -52,9 +52,8 @@ public class IdeaController {
     
 
     
-        return responseForm;
         try {
-            Set<Idea> ideasByTitle = ideaRepository.findIdeaByTitleContainingIgnoreCase(title);
+            Set<Idea> ideasByTitle = ideaRepository.findIdeaBytitle(mTitle);
 
             if(ideasByTitle == null) {
                 responseForm.setIdeas(new HashSet<>());
