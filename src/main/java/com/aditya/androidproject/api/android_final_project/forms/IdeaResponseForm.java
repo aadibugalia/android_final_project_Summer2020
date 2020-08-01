@@ -15,6 +15,7 @@ public class IdeaResponseForm {
     private String context;
     private String content;
     private String id;
+    private String originalID;
 
     private String status;
     private String message;

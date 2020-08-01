@@ -36,6 +36,7 @@ public class OperationsController {
             Idea idea = new Idea();
             idea.setTitle(newIdeaForm.getTitle());
             idea.setContext(newIdeaForm.getContext());
+            idea.setOriginalID(newIdeaForm.getOriginalID());
             idea.setContent(newIdeaForm.getContent());
             idea.setCreator(person);
 

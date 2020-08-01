@@ -28,6 +28,9 @@ public class Idea {
   
     private long id;
 
+    @Column(unique = false, nullable = true)
+    private String originalID;
+
 
     @Column(unique = true, nullable = false)
     private String title;
