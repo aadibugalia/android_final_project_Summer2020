@@ -88,6 +88,7 @@ public class UserAccessContrioller {
                 mPerson.setUserName(personRegisterationForm.getUserName());
                 mPerson.setPeopleFollowed(new HashSet<Person>());
                 mPerson.setSavedIdeasAsToDo(new HashSet<Idea>());
+                mPerson.setPersonalIdeas(new HashSet<Idea>());
 
                 returnForm.setPerson(userAccessRepository.save(mPerson));
                 returnForm.setStatus("0");
