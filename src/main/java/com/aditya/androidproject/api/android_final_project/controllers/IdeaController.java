@@ -1,6 +1,7 @@
 package com.aditya.androidproject.api.android_final_project.controllers;
 
 import java.util.HashSet;
+import java.util.Set;
 
 import com.aditya.androidproject.api.android_final_project.forms.IdeaResponseForm;
 import com.aditya.androidproject.api.android_final_project.models.Idea;
@@ -8,6 +9,7 @@ import com.aditya.androidproject.api.android_final_project.repository.IdeaReposi
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,6 +41,37 @@ public class IdeaController {
         }
         return responseForm;
     }
+
+
+    @PostMapping("/getIdea/{title}")
+    public IdeaResponseForm getAllIdeas(@PathVariable String mTitle) {
+        IdeaResponseForm responseForm = new IdeaResponseForm();
+
+
+
+    
+
+    
+        return responseForm;
+        try {
+            Set<Idea> ideasByTitle = ideaRepository.findIdeaByTitleContainingIgnoreCase(title);
+
+            if(ideasByTitle == null) {
+                responseForm.setIdeas(new HashSet<>());
+            } else {
+                responseForm.setIdeas(ideasByTitle);
+            }
+            responseForm.setStatus("0");
+            responseForm.setMessage("success");
+        } catch (Exception e) {
+            e.printStackTrace();
+            responseForm.setIdeas(new HashSet<Idea>());
+            responseForm.setStatus("0");
+            responseForm.setMessage("success");
+        }
+        return responseForm;
+    }
+
     @PostMapping("/{username}/deleteIdea")
     public IdeaResponseForm deleteIdea( @RequestParam Long id) {
         IdeaResponseForm responseForm = new IdeaResponseForm();
